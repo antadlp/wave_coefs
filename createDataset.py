@@ -1,12 +1,13 @@
 import os
 import shelve
 import sys
+import config
 
 import numpy as np
 from pyparsing import *
 
 DATASET = shelve.open('DB.shlv')
-
+DATASETCFG = config.datasets['A']
 
 class parseGeometry(object):
     def __init__(self):
@@ -167,9 +168,9 @@ def targetCoefsMatrix(outs_dir='./MosDemonAgua'):
     return np.matrix(coefslistlist)
 
 
-def createEntireDataset(geometriesfn='geometrias.xyz',
-                        outsdirfn='./MosDemonAgua',
-                        energiesfn='energies'):
+def createEntireDataset(geometriesfn=DATASETCFG['geometriesfn'],
+                        outsdirfn=DATASETCFG['outsdirfn'],
+                        energiesfn=DATASETCFG['energiesfn']):
     pG = parseGeometry()
 
     if 'geometries' not in DATASET:
