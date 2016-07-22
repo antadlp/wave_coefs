@@ -37,7 +37,10 @@ def main():
 
     model = Sequential()
 
-    model.add(Dense(output_dim=300, input_dim=input_size,init='lecun_uniform', activation='relu'))
+    model.add(Dense(output_dim=300,
+                    input_dim=input_size,
+                    init='lecun_uniform',
+                    activation='relu'))
     model.add(Activation("relu"))
     model.add(Dropout(0.8))
     model.add(Dense(output_dim=600, input_dim=300))
@@ -62,13 +65,17 @@ def main():
     print 'Score:', score
     return score
 
-def main_iterate_on_time(n=10,initial_ds_size=1000,batch_size=200):
+
+def main_iterate_on_time(n=20, initial_ds_size=1000):
     createDataset.createEntireDataset()
     X = DATASET['geometries']
-    Y = DATASET['coeficients']
+    #Y = DATASET['coeficients']
+    Y = DATASET['energies']
+
+    batch_size = (len(X) - initial_ds_size) / n
 
     input_size = X.shape[1]
-    output_size = Y.shape[1]
+    output_size = 1  #Y.shape[1]
     print 'input_size:', input_size
     print 'output_size:', output_size
     print 'X.shape', X.shape
@@ -82,10 +89,12 @@ def main_iterate_on_time(n=10,initial_ds_size=1000,batch_size=200):
     training_sizes = []
     for i in xrange(n):
         print 'STEP:', i
-        X_train   = X[:initial_ds_size+i*batch_size]
-        X_test = X[initial_ds_size+i*batch_size:initial_ds_size+i*batch_size+batch_size]
-        y_train   = Y[:initial_ds_size+i*batch_size]
-        y_test = Y[initial_ds_size+i*batch_size:initial_ds_size+i*batch_size+batch_size]
+        X_train = X[:initial_ds_size + i * batch_size]
+        X_test = X[initial_ds_size + i * batch_size:initial_ds_size + i *
+                   batch_size + batch_size]
+        y_train = Y[:initial_ds_size + i * batch_size]
+        y_test = Y[initial_ds_size + i * batch_size:initial_ds_size + i *
+                   batch_size + batch_size]
 
         print X_train, y_train
         print 'X_train.shape, y_train.shape:', X_train.shape, y_train.shape
@@ -93,13 +102,20 @@ def main_iterate_on_time(n=10,initial_ds_size=1000,batch_size=200):
 
         model = Sequential()
 
-        model.add(Dense(output_dim=300, input_dim=input_size,init='lecun_uniform', activation='relu'))
+        model.add(Dense(output_dim=300,
+                        input_dim=input_size,
+                        init='lecun_uniform',
+                        activation='relu'))
         model.add(Activation("relu"))
-        model.add(Dropout(0.8))
-        model.add(Dense(output_dim=600, input_dim=300))
+        model.add(Dropout(0.3))
+        model.add(Dense(output_dim=300, input_dim=300))
         model.add(Activation("relu"))
-        model.add(Dense(output_dim=output_size, input_dim=600))
-        model.add(Activation("softmax"))
+        model.add(Dropout(0.25))
+        model.add(Dense(output_dim=150,input_dim=300) )
+        model.add(Activation('relu'))
+        model.add(Dropout(0.25))
+        model.add(Dense(output_dim=output_size, input_dim=300))
+        #model.add(Activation("softmax"))
 
         #model.add(Dense(output_dim=100,input_dim=input_size) )
         #model.add(Activation('relu'))
@@ -117,13 +133,14 @@ def main_iterate_on_time(n=10,initial_ds_size=1000,batch_size=200):
         score = model.evaluate(X_test, y_test, batch_size=70)
         print 'Score:', score
         scores.append(score)
-        training_sizes.append(str(initial_ds_size+i*batch_size))
+        training_sizes.append(str(initial_ds_size + i * batch_size))
     print 'Scores:', scores
     print 'training_sizes:', training_sizes
     plt.plot(scores)
     plt.show()
     return score
 
+
 if __name__ == '__main__':
-    main_iterate_on_time()
-    #main()
+    #main_iterate_on_time()
+    main()
