@@ -7,7 +7,7 @@ import numpy as np
 from pyparsing import *
 
 DATASET = shelve.open('DB.shlv')
-DATASETCFG = config.datasets['A']
+DATASETCFG = config.datasets['B']
 
 class parseGeometry(object):
     def __init__(self):
@@ -156,7 +156,7 @@ def targetCoefsMatrix(outs_dir='./MosDemonAgua'):
 
     for outfn in outsfilenames:
         _i = outfn.index('_')
-        __i = len('sMOsFrame')
+        __i = outfn.index('rame') + len('rame')
         num = int(outfn[__i:_i]) - 1
         orderedouts[num] = outfn
 
@@ -187,6 +187,8 @@ def createEntireDataset(geometriesfn=DATASETCFG['geometriesfn'],
         _energies = pG.energies(energiesfn)
         print '_energies', _energies.shape
         DATASET['energies'] = _energies
+
+    DATASET.close()
 
 def testDataset():
     #print 'keys:', DATASET.keys()
@@ -239,13 +241,13 @@ def parsingTests():
 
 
 def main():
-    createEntireDataset()
-    testDataset()
+    #createEntireDataset()
+    #testDataset()
     #print targetCoefsMatrix().shape
     #print pG.targetWaveEqCoeficientsFrame()
     #pG.matrixFromGeometryFrames(sys.argv[1]) #geometries
     #pG.matrixFromChargeFrames(sys.argv[2]) #mulliken
-
+    parsingTests()
 
 if __name__ == '__main__':
     main()
