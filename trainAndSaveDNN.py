@@ -21,8 +21,7 @@ def dienen(object):
 def main():
     createDataset.createEntireDataset()
     X = DATASET['geometries']
-    Y = DATASET['coeficients']
-
+    Y = DATASET['coeficients'] # 'energies'
     input_size = X.shape[1]
     output_size = Y.shape[1]
     print 'input_size:', input_size
@@ -37,28 +36,28 @@ def main():
 
     model = Sequential()
 
-    model.add(Dense(output_dim=300,
+    model.add(Dense(output_dim=150,
                     input_dim=input_size,
                     init='lecun_uniform',
                     activation='relu'))
     model.add(Activation("relu"))
     model.add(Dropout(0.8))
-    model.add(Dense(output_dim=600, input_dim=300))
+    model.add(Dense(output_dim=100, input_dim=150))
     model.add(Activation("relu"))
-    model.add(Dense(output_dim=output_size, input_dim=600))
+    model.add(Dense(output_dim=output_size, input_dim=100))
     model.add(Activation("relu"))
 
     #model.add(Dense(output_dim=100,input_dim=input_size) )
     #model.add(Activation('relu'))
     #model.add(Dense(100, output_size))
-    model.compile(loss='mean_squared_error', optimizer='rmsprop')
+    model.compile(loss='mean_squared_error', optimizer='adam')
 
-    model.fit(X_train, y_train, nb_epoch=100, batch_size=42)
+    model.fit(X_train, y_train, nb_epoch=50, batch_size=64)
 
     y_pred = model.predict(X_test)
     for o, p in zip(y_test, y_pred):
-        print o
-        print p
+        print 'Real:\n', o
+        print 'Predicted:\n', p
         print '\n'
 
     score = model.evaluate(X_test, y_test, batch_size=70)
