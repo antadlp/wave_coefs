@@ -2,3 +2,4 @@ MosDemonAgua
 DB.shlv.db
 *.out
 *.pyc
+datasets/*
