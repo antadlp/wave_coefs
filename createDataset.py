@@ -80,8 +80,9 @@ class parseGeometry(object):
         framesList.append(np.asarray(frameattributes))
 
         framesMatrix = np.array(framesList)
-        print framesMatrix
-        print '\n*** Shape of created dataset:', framesMatrix.shape
+        print(framesMatrix)
+        print('\n*** Shape of created dataset:',\
+              framesMatrix.shape)
         return framesMatrix
 
     def matrixFromChargeFrames(self, mullikenFile):
@@ -112,8 +113,8 @@ class parseGeometry(object):
         framesChargesList.append(np.asarray(framecharges))
 
         framesChargesList = np.array(framesChargesList)
-        print framesChargesList
-        print framesChargesList.shape
+        print(framesChargesList)
+        print(framesChargesList.shape)
         return framesChargesList
 
     def energies(self,energiesFile):
@@ -137,7 +138,7 @@ class parseGeometry(object):
                 if not _parsedCoefs.orbitalName in allowed_orbitals:
                     continue
                 coefs = map(float, _parsedCoefs.coefs)
-                print '\n', coefs
+                print('\n', coefs)
                 targets = targets + coefs
                 change_block = False
             except:
@@ -175,69 +176,69 @@ def createEntireDataset(geometriesfn=DATASETCFG['geometriesfn'],
 
     if 'geometries' not in DATASET:
         _geometries = pG.matrixFromGeometryFrames(geometriesfn)
-        print '_geometries', _geometries.shape
+        print('_geometries', _geometries.shape)
         DATASET['geometries'] = _geometries
 
     if 'coeficients' not in DATASET:
         _waveqcoefs = targetCoefsMatrix(outs_dir=outsdirfn)
-        print '_waveqcoefs', _waveqcoefs.shape
+        print('_waveqcoefs', _waveqcoefs.shape)
         DATASET['coeficients'] = _waveqcoefs
 
     if 'energies' not in DATASET:
         _energies = pG.energies(energiesfn)
-        print '_energies', _energies.shape
+        print('_energies', _energies.shape)
         DATASET['energies'] = _energies
 
     DATASET.close()
 
 def testDataset():
     #print 'keys:', DATASET.keys()
-    print 'shape geometries', DATASET['geometries'].shape
-    print 'shape coeficients', DATASET['coeficients'].shape
+    print('shape geometries', DATASET['geometries'].shape)
+    print('shape coeficients', DATASET['coeficients'].shape)
 
 
 def parsingTests():
     pG = parseGeometry()
 
-    print '\n** Test atomline'
+    print('\n** Test atomline')
     atomline = pG.atomNumLine.parseString("   27")
-    print atomline
+    print(atomline)
 
-    print '\n** Test frame number'
+    print('\n** Test frame number')
     framenum = pG.frameNumber.parseString(" molec	  1")
-    print framenum
-    print framenum.frameNumber
+    print(framenum)
+    print(framenum.frameNumber)
 
-    print '\n** Test coordinates'
+    print('\n** Test coordinates')
     coords = pG.coords.parseString("O		 -3.1351	  0.3995	 -2.4964")
-    print coords
-    print float(coords.x), float(coords.y), float(coords.z)
+    print(coords)
+    print(float(coords.x), float(coords.y), float(coords.z))
 
-    print '\n** Test mulliken line'
+    print('\n** Test mulliken line')
     mullikenl = pG.mullikenLine.parseString("mulliken charges   10.000")
-    print mullikenl
-    print mullikenl.mullikenCharges
+    print(mullikenl)
+    print(mullikenl.mullikenCharges)
 
-    print '\n** Test charge line'
+    print('\n** Test charge line')
     chargel = pG.chargeLine.parseString("  15   -0.654")
-    print chargel
-    print float(chargel.charge)
+    print(chargel)
+    print(float(chargel.charge))
 
-    print '\n** Wave coeficients line'
+    print('\n** Wave coeficients line')
     coefsline = pG.coefsNumsLine.parseString("								1		  2		  3		  4		  5")
-    print coefsline
+    print(coefsline)
 
-    print '\n** Wave coeficients line 2'
+    print('\n** Wave coeficients line 2')
     coefsline2 = pG.coefsNumsLine_2.parseString(
         "							 2.0000	 2.0000	 2.0000	 2.0000	 2.0000")
-    print coefsline2
+    print(coefsline2)
 
-    print '\n** Coeficients atom line'
-    coefsAtomsLine = pG.coefsAtomsLine.parseString(
+    print('\n** Coeficients atom line')
+    coefsAtomsLine = pG.coefsAtomsLine.parseString(\
         "	 2	1   H	2s	   -0.0004	-0.0000	 0.0000	 0.0002	-0.0003")
-    print coefsAtomsLine
-    print "orbitalName:", coefsAtomsLine.orbitalName
-    print "coefs:", coefsAtomsLine.coefs
+    print(coefsAtomsLine)
+    print("orbitalName:", coefsAtomsLine.orbitalName)
+    print("coefs:", coefsAtomsLine.coefs)
 
 
 def main():

@@ -25,7 +25,7 @@ def main():
     X = DATASET['geometries']
     Y = DATASET['coeficients']
     E = DATASET['energies']
-    print 'Datasets retrieved'
+    print('Datasets retrieved')
     dimred = TSNE(n_components=2)
     XX = dimred.fit_transform(X)
     sc = plt.scatter(XX[:, 0],
