@@ -1,5 +1,5 @@
 !git add -A .
-!git commit -m "Making script to clean deMon.out and get geometries.xyz"
+!git commit -m "Finished script (manageData01.py) to clean deMon.out for geometries.xyzz"
 !git add -A .
 !git push origin master
 
