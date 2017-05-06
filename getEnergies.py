@@ -20,18 +20,8 @@ def searchAndPrintOut(inputFile, outputFile):
         if "POTENTIAL ENERGY" in line:
             fileOut.write('{}'.format(step))
             fileOut.write('    ')
-
-            for k in range(30): 
-                fileOut.write(line.split()[1]) #get the atom index, i.e: H or O
-                fileOut.write('     ')
-                fileOut.write(line.split()[2]) #get x coordinate
-                fileOut.write('   ')
-                fileOut.write(line.split()[3]) #get y coordinate
-                fileOut.write('   ')
-                fileOut.write(line.split()[4]) #get z coordinate
-                fileOut.write('\n')
-                line=next(F)                   #jump to next atom
-
+            fileOut.write(line.split()[3]) #get energy
+            fileOut.write('\n')
             step += 1 #when this loops ends, the outside loop search for the
                       #next step on the dynamic that's why step+=1
 
@@ -42,7 +32,7 @@ def searchAndPrintOut(inputFile, outputFile):
     return;
 
 
-searchAndPrintOut('../../data/deMon.out', 'geometries.xyz')
+searchAndPrintOut('../../data/deMon.out', 'energies')
 
 
 
