@@ -1,5 +1,5 @@
 !git add -A .
-!git commit -m "The print commands are being modified for python 3.*, previously they were written for python 2.*"
+!git commit -m "Making script to clean deMon.out and get geometries.xyz"
 !git add -A .
 !git push origin master
 
