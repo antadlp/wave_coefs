@@ -1,5 +1,5 @@
 !git add -A .
-!git commit -m "Finished script (manageData01.py) to clean deMon.out for geometries.xyzz"
+!git commit -m "renamed manageData01.py to getMovieXYZ.py"
 !git add -A .
 !git push origin master
 

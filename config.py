@@ -1,6 +1,6 @@
 datasets = {
     'A': {
-        'geometriesfn': 'geometrias.xyz',
+        'geometriesfn': 'geometries.xyz',
         'outsdirfn': './MosDemonAgua',
         'energiesfn': 'energies'
     },
