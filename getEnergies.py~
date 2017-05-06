@@ -22,8 +22,7 @@ def searchAndPrintOut(inputFile, outputFile):
             fileOut.write('    ')
             fileOut.write(line.split()[3]) #get energy
             fileOut.write('\n')
-            step += 1 #when this loops ends, the outside loop search for the
-                      #next step on the dynamic that's why step+=1
+            step += 1 
 
 
     fileOut.close()
