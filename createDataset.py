@@ -7,7 +7,7 @@ import numpy as np
 from pyparsing import *
 
 DATASET = shelve.open('DB.shlv')
-DATASETCFG = config.datasets['B']
+DATASETCFG = config.datasets['A']
 
 class parseGeometry(object):
     def __init__(self):

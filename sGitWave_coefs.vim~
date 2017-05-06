@@ -1,5 +1,5 @@
 !git add -A .
-!git commit -m "Making script to get energies from deMon.out"
+!git commit -m "finished getEnergies.py"
 !git add -A .
 !git push origin master
 

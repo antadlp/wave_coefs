@@ -1,12 +1,12 @@
 datasets = {
     'A': {
         'geometriesfn': 'geometries.xyz',
-        'outsdirfn': './MosDemonAgua',
+        'outsdirfn': '../../data/AguasT350',
         'energiesfn': 'energies'
     },
     'B': {
-        'geometriesfn': 'datasets/dynamovie.xyz',
-        'outsdirfn': 'datasets/coeficientes-350-kelvin/movecsAguasT350',
-        'energiesfn': 'datasets/energies'
+        'geometriesfn': 'geometries.xyz',
+        'outsdirfn': '../../data/AguasT350',
+        'energiesfn': 'energies'
     }
 }
