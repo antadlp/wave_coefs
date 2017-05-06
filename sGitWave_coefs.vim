@@ -1,5 +1,5 @@
 !git add -A .
-!git commit -m "renamed manageData01.py to getMovieXYZ.py"
+!git commit -m "Making script to get energies from deMon.out"
 !git add -A .
 !git push origin master
 
