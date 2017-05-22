@@ -1,7 +1,7 @@
 datasets = {
     'A': {
         'geometriesfn': 'geometries.xyz',
-        'outsdirfn': '../../data/AguasT350',
+        'outsdirfn': '../../data/AguasT350/',
         'energiesfn': 'energies'
     },
     'B': {
@@ -10,3 +10,4 @@ datasets = {
         'energiesfn': 'energies'
     }
 }
+

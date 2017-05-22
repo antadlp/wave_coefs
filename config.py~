@@ -1,12 +1,13 @@
 datasets = {
     'A': {
         'geometriesfn': 'geometries.xyz',
-        'outsdirfn': '../../data/AguasT350',
+        'outsdirfn': '../../data/AguasT350/',
         'energiesfn': 'energies'
     },
     'B': {
-        'geometriesfn': 'dynamovie.xyz',
+        'geometriesfn': 'geometries.xyz',
         'outsdirfn': '../../data/AguasT350',
         'energiesfn': 'energies'
     }
 }
+
