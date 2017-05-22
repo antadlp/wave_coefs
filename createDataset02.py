@@ -35,7 +35,7 @@ class parseGeometry(object):
             "atomNum") + Word(alphas)("atom") + Word(alphanums)(
                 "orbitalName") + self.coefsNumsLine_2("coefs") + stringEnd
 
-    def matrixFromGeometryFrames(self, geometriesFile):
+            def matrixFromGeometryFrames(self, geometriesFile):
         fin = open(geometriesFile, 'r')
         #newframe = True
         firstframe = True
@@ -134,15 +134,15 @@ def createEntireDataset(geometriesfn=DATASETCFG['geometriesfn'],
         print('_geometries', _geometries.shape)
         DATASET['geometries'] = _geometries
 
-    if 'coeficients' not in DATASET:
-        _waveqcoefs = targetCoefsMatrix(outs_dir=outsdirfn)
-        print('_waveqcoefs', _waveqcoefs.shape)
-        DATASET['coeficients'] = _waveqcoefs
+#    if 'coeficients' not in DATASET:
+#        _waveqcoefs = targetCoefsMatrix(outs_dir=outsdirfn)
+#        print('_waveqcoefs', _waveqcoefs.shape)
+#        DATASET['coeficients'] = _waveqcoefs
 
-    if 'energies' not in DATASET:
-        _energies = pG.energies(energiesfn)
-        print('_energies', _energies.shape)
-        DATASET['energies'] = _energies
+#    if 'energies' not in DATASET:
+#        _energies = pG.energies(energiesfn)
+#        print('_energies', _energies.shape)
+#        DATASET['energies'] = _energies
 
     DATASET.close()
 

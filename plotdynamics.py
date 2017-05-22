@@ -44,17 +44,20 @@ DATASET = shelve.open('DB.shlv')
 
 createDataset.createEntireDataset()
 X = DATASET['geometries']
-Y = DATASET['coeficients']
-E = DATASET['energies']
+#Y = DATASET['coeficients']
+#E = DATASET['energies']
 print('Datasets retrieved')
-dimred = TSNE(n_components=2)
-XX = dimred.fit_transform(X)
-sc = plt.scatter(XX[:, 0],
-                 XX[:, 1],
-                 c=E,
-                 cmap="Spectral",
-                 alpha=0.5,
-                 edgecolors='none')
-plt.colorbar(sc)
-plt.show()
+print(X)
 
+
+#dimred = TSNE(n_components=2)
+#XX = dimred.fit_transform(X)
+#sc = plt.scatter(XX[:, 0],
+#                 XX[:, 1],
+#                 c=E,
+#                 cmap="Spectral",
+#                 alpha=0.5,
+#                 edgecolors='none')
+#plt.colorbar(sc)
+#plt.show()
+#
