@@ -1,15 +1,24 @@
 import re
 import sys
+from pyparsing import *
 
 def searchAndPrintOut(inputFile, outputFile):
 
+
+
+
+    #     1    1   H    1s        0.0000     0.0000     0.0000    -0.0003     0.0000
+
+    num Word(nums).
+    atomInInput= Word(nums)
+    atomicNumber = 
     F = open(inputFile,'r')
     fileOut = open(outputFile, "w")
 
     lineNumber = 1 
     for line in F:
         lineNumber+= 1
-        if lineNumber >= 2: #me quedo en la dos al salir ya no imprime
+        if lineNumber >= 2: #stay :w
             break
 
     for line in F:
@@ -23,13 +32,25 @@ def searchAndPrintOut(inputFile, outputFile):
 
     
     bloque = 1 #1, 2, 3, 4, 5
-    for line in F:
-        print(line)
+    while True:
+        atomo = 1
+
+        #verify wich atom for loop on orbitals
+        Z = line.split().[2]
+        Z = int(Z)
+
+        for i in range(Z):
+           info 
+
+        
+        
+        
+        
         lineNumber+= 1
         if lineNumber >=9:
             break
 
-    
+
 
     return;
 
