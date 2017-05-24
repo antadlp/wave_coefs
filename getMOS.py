@@ -9,7 +9,7 @@ def searchAndPrintOut(inputFile, outputFile):
     lineNumber = 1 
     for line in F:
         lineNumber+= 1
-        if lineNumber >= 2: #me quedo en la dos al salir ya no imprime
+        if lineNumber >= 2: #stay :w
             break
 
     for line in F:

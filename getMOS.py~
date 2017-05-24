@@ -9,19 +9,19 @@ def searchAndPrintOut(inputFile, outputFile):
     lineNumber = 1 
     for line in F:
         lineNumber+= 1
-        if lineNumber >= 2:
+        if lineNumber >= 2: #me quedo en la dos al salir ya no imprime
             break
 
     for line in F:
         print(line)
         lineNumber+= 1
-        if lineNumber >= 7:
+        if lineNumber >= 7: #ya no imprime 7, me quedo alli
             break
 
 
     print("sali header bloque 1")
 
-
+    
     bloque = 1 #1, 2, 3, 4, 5
     for line in F:
         print(line)
