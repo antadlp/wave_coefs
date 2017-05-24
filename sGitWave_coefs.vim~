@@ -1,5 +1,5 @@
 !git add -A .
-!git commit -m "stuck with error line 159, in targetCoefsMatrix _i = outfn.index('_') ValueError: substring not found"
+!git commit -m "Trying an explicit input method"
 !git add -A .
 !git push origin master
 
