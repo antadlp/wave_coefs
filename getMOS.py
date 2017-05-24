@@ -7,11 +7,22 @@ def searchAndPrintOut(inputFile, outputFile):
 
 
 
-    #     1    1   H    1s        0.0000     0.0000     0.0000    -0.0003     0.0000
+    #pyparsing construction for parsing a line of the
+    #'sMOsT350Frame1110_SCF5.out file', the objective is to have
+    #a matrix of all the ordered info, so it will be easy for
+    #access
 
-    num Word(nums).
-    atomInInput= Word(nums)
-    atomicNumber = 
+#     1    1   H    1s        0.0000     0.0000     0.0000    -0.0003     0.0000
+    num = Word(nums).suppress()
+    atomInInput = Word(nums)
+    atomicSymbol = Word(alphas)
+    orbitalSymbol = Word(alphanums)
+    orbitalValues = OneOrMore( Combine(Optional("-") + \
+        OneOrMore( Word( nums + "." + nums )) ))
+    lineOrbitalOrder = num + atomInInput + atomicSymbol + \
+            orbitalSymbol + orbitalValues
+
+
     F = open(inputFile,'r')
     fileOut = open(outputFile, "w")
 
@@ -40,7 +51,11 @@ def searchAndPrintOut(inputFile, outputFile):
         Z = int(Z)
 
         for i in range(Z):
-           info 
+            AllOrbitalInfo.append(\
+                    lineOrbitalOrder.parseString(line).asList())
+
+
+           
 
         
         
