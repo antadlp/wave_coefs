@@ -61,6 +61,7 @@ def searchAndPrintOut(inputFile, outputFile):
                     lineOrbitalOrder.parseString(line).asList())
             line = next(F)
             lineNumber+=1
+            bloque+=1
             
             if lineNumber >= 12: #ya no imprime 12, me quedo alli
                 break

@@ -47,8 +47,9 @@ def searchAndPrintOut(inputFile, outputFile):
     print(line + "LL2")
 
     
-    bloque = 1 #1, 2, 3, 4, 5
-    while True:
+    bloque = 1 #There are as many bloques as number of atoms in the dynamics
+               #in this case there are 30 atoms, thus there are 30 bloques
+    while bloque:
         atomo = 1
 
         #verify wich atom for loop on orbitals
@@ -61,6 +62,7 @@ def searchAndPrintOut(inputFile, outputFile):
                     lineOrbitalOrder.parseString(line).asList())
             line = next(F)
             lineNumber+=1
+            bloque+=1
             
             if lineNumber >= 12: #ya no imprime 12, me quedo alli
                 break
